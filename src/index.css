@@ -1,0 +1,189 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgb(10, 8, 8);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 2px solid black;
+  margin: 0.5em;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.table-header {
+  margin-top: 1rem;
+}
+
+.user-input {
+  display: grid;
+  grid-template-columns: 30px 150px 220px 120px 180px 180px 180px;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 0;
+}
+
+.user-list {
+  display: grid;
+  grid-template-columns: 30px 150px 220px 120px 180px 180px 180px;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 5px;
+}
+
+.popup-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.popup-popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 2rem 1rem 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  max-width: 90vw;
+  overflow-wrap: break-word;
+}
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* TODO: romove after register form refactor */
+.register-input {
+  display: grid;
+  grid-template-columns: 180px 180px 180px;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 0;
+  padding: 5px;
+  width: 540px;
+  border: 1px solid gray;
+}
+
+.popup-button {
+  background: none;
+  border: none;
+  color: blue;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+.popup-button:focus {
+  outline: none;
+}
+
+.popup-close-button {
+  position: absolute;
+  top: 1px;
+  right: 7px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-close-button:focus {
+  outline: none;
+}
+
+.login-error {
+  color: red;
+}
+
+.message.error {
+  color: red;
+  margin-top: 1rem;
+}
+
+/* .register-form {
+  width: 540px;
+  border: 1px solid gray;
+} */
+.bold {
+  font-weight: bold;
+}
+
+.disabled {
+  color: grey;
+}
+
+.message {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.message.error {
+  color: red;
+}
+
+.message.success {
+  color: black;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

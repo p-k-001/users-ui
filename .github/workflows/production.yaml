@@ -1,0 +1,46 @@
+name: Vercel Production Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Deploy-Production:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Vite/React repo
+        uses: actions/checkout@v3
+
+      # - name: Checkout Selenium Test Repo
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: p-k-001/test-API-UI-selenium
+      #     path: selenium-tests
+      #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      # - name: Set up Java 21
+      #   uses: actions/setup-java@v3
+      #   with:
+      #     distribution: "temurin"
+      #     java-version: "21"
+
+      # - name: Run Selenium Tests with Maven
+      #   working-directory: ./selenium-tests
+      #   run: |
+      #     mvn clean install
+      #     mvn test
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
