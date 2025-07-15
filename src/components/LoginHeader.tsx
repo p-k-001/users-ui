@@ -27,7 +27,15 @@ export default function LoginHeader({
       {isLoggedIn ? (
         <>
           <p>Logged in as: {email}</p>
-          <button onClick={handleLogout}>Logout</button>
+          <button
+            className="popup-button"
+            onClick={() => {
+              setShowRegistration(false);
+              handleLogout();
+            }}
+          >
+            Logout
+          </button>
         </>
       ) : (
         <>

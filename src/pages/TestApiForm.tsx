@@ -338,6 +338,8 @@ export default function TestApiForm({
                     setEmail(user.email);
                     setAge(user.age);
                     setRole(user.role as Role);
+                    setMessage(null);
+                    setError(null);
                   }}
                 >
                   Edit
