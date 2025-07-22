@@ -49,8 +49,19 @@ export default function TestApiForm({
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const loadUsers = () => {
-    fetch(`${apiUrl}/users`)
-      .then((res) => res.json())
+    fetch(`${apiUrl}/users`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Failed to load users: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
         setUsers(Array.isArray(data) ? data : []);
       })
@@ -61,8 +72,12 @@ export default function TestApiForm({
   };
 
   useEffect(() => {
-    loadUsers();
-  }, [apiUrl]);
+    if (isLoggedIn) {
+      loadUsers(); // fetch only after login
+    } else {
+      setUsers([]); // clear list after logout
+    }
+  }, [isLoggedIn, apiUrl]);
 
   const addUser = () => {
     setError(null);
@@ -89,6 +104,7 @@ export default function TestApiForm({
           setUsers((prevUsers) => [...prevUsers, newUser]);
           setMessage("User successfully added.");
           leaveEditing();
+          loadUsers();
         } else {
           console.error("Received invalid user data:", newUser);
           setError({ message: "Server returned invalid user data" });
@@ -186,6 +202,7 @@ export default function TestApiForm({
             prevUsers.map((u) => (u.id === updatedUser.id ? updatedUser : u))
           );
           leaveEditing();
+          loadUsers();
         } else {
           console.error("Received invalid user data:", updatedUser);
           setError({ message: "Server returned invalid user data" });
