@@ -2,6 +2,7 @@ import TestApiForm from "../components/TestApiForm";
 import LoginHeader from "../components/LoginHeader";
 
 import { useEffect, useState } from "react";
+import Info from "../components/Info";
 
 interface ErrorMessage {
   msg?: string;
@@ -35,6 +36,7 @@ export default function HomePage() {
   };
   return (
     <div>
+      <Info />
       <LoginHeader
         isLoggedIn={isLoggedIn}
         email={email}
