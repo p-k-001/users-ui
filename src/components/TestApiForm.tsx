@@ -76,6 +76,8 @@ export default function TestApiForm({
       loadUsers(); // fetch only after login
     } else {
       setUsers([]); // clear list after logout
+      setError(null);
+      setMessage(null);
     }
   }, [isLoggedIn, apiUrl]);
 
@@ -185,7 +187,7 @@ export default function TestApiForm({
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify({ name, email, age: age, role }),
+      body: JSON.stringify({ name, email, age, role }),
     })
       .then((res) => {
         if (!res.ok) {
