@@ -72,6 +72,7 @@ export default function RegisterForm({
           closeLoginForm();
         }}
         className="popup-button"
+        data-testid="register-button"
       >
         Register
       </button>
@@ -79,6 +80,7 @@ export default function RegisterForm({
         <div className="popup-popover">
           <button
             className="popup-close-button"
+            data-testid="close-register-button"
             onClick={() => setShowRegistration(false)}
           >
             &times;
@@ -89,6 +91,7 @@ export default function RegisterForm({
               type="email"
               placeholder="email"
               value={email}
+              data-testid="email-input"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -97,11 +100,16 @@ export default function RegisterForm({
               type="password"
               placeholder="password"
               value={password}
+              data-testid="password-input"
               onChange={(e) => setPassword(e.target.value)}
               required
             />
 
-            <button type="submit" className="register-button">
+            <button
+              type="submit"
+              className="register-button"
+              data-testid="register-submit"
+            >
               Register
             </button>
             {registrationMessage && (
