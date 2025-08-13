@@ -113,7 +113,10 @@ export default function RegisterForm({
               Register
             </button>
             {registrationMessage && (
-              <p className={error ? "message error" : "message success"}>
+              <p
+                className={error ? "message error" : "message success"}
+                data-testid="registration-message"
+              >
                 {registrationMessage}
               </p>
             )}
