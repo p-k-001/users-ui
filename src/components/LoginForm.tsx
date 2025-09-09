@@ -69,6 +69,7 @@ export default function LoginForm({
           closeRegisterForm();
         }}
         className="popup-button"
+        data-testid="show-login-button"
       >
         Log in
       </button>
@@ -87,6 +88,7 @@ export default function LoginForm({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              data-testid="email-login-input"
             />
             <input
               type="password"
@@ -94,8 +96,11 @@ export default function LoginForm({
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              data-testid="password-login-input"
             />
-            <button type="submit">Login</button>
+            <button type="submit" data-testid="submit-login-button">
+              Login
+            </button>
 
             {error && <p className="login-error">{error}</p>}
           </form>
