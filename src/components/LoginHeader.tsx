@@ -26,7 +26,7 @@ export default function LoginHeader({
     <div>
       {isLoggedIn ? (
         <>
-          <p>Logged in as: {email}</p>
+          <p data-testid="user-loggedin">Logged in as: {email}</p>
           <button
             className="popup-button"
             onClick={() => {
